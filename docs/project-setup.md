@@ -155,3 +155,4 @@ https://github.com/reactjs/redux/tree/master/examples/counter/src
 
 Place all files (test is not included yet) in the app folder.
 Note that our webpack is pointing to the index.js from this example.
+TESTCHANGE

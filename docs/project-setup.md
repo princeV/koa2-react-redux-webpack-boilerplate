@@ -68,6 +68,7 @@ __webpack.config.js:__
 Very basic webpack setup:
 ```javascript
 module.exports = {
+  devtool: 'source-map',
   entry:  __dirname + "/app/index.js",
   output: {
     path: __dirname + "/build",
@@ -84,6 +85,9 @@ module.exports = {
   },
 }
 ```
+- devtool: 'source-map' adds source mapping. More infos [here](http://webpack.github.io/docs/configuration.html#devtool).  
+You can see the mapping in the browser like this:
+![Webpack Source Map Browser](./Webpack_SourceMap.jpg)
 - entry is the file where the react components get rendered
 - output is the bundle.js in build path
   - the bundle.js needs to get refeenced in the html template

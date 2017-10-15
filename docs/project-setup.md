@@ -12,7 +12,7 @@ Babel hook and polyfill
 - register as the hook to make sure we can write in ES6/7 on the server side
 - polyfill is required for new build ins like Promise that are required for Koa2
 ```bash
-$ npm install babel-polyfill babel-register --save
+$ npm install babel-polyfill@6.26.0 babel-register@6.26.0
 ```
 
 Babel presets and loader:
@@ -22,7 +22,7 @@ Babel presets and loader:
 - react is required for the react jsx syntax etc.
 - babel-loader is required for the webpack setup - client side
 ```bash
-$ npm install babel-preset-es2015 babel-preset-stage-3 babel-preset-react babel-loader --save-dev
+$ npm install babel-preset-env@1.6.0 babel-preset-stage-0@6.24.1 babel-preset-react@6.24.1 babel-loader@7.1.2 --only=dev
 ```
 
 #### Setup:
@@ -31,7 +31,7 @@ Once all the babel modules are installed, create a file named .babelrc with the 
 
 ```json
 {
-  "presets": [ "es2015", "stage-0", "react" ]
+  "presets": [ "env", "stage-0", "react" ]
 }
 ```
 The file defines the presets that the webpack babel-loader and the babel hook will use.  
@@ -59,7 +59,7 @@ Last point here is to add a script shortcut in the package.json:
 #### Installation:
 
 ```bash
-$ npm install webpack --save-dev
+$ npm install webpack@3.7.1 --only=dev
 ```
 
 #### Setup:
@@ -75,11 +75,11 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       }
     ]
   },
@@ -107,7 +107,7 @@ Last point here is to add a script shortcut in the package.json:
 We need the core koa2 module and we also need to have something to server our bundle.js from webpack. We'll use koa-static as this is koa2 compatible.
 Install both via:
 ```bash
-$ npm install koa@next koa-static@next --save
+$ npm install koa@2.3.0 koa-static@4.0.1
 ```
 #### Setup:
 
@@ -140,6 +140,7 @@ app.use((ctx, next) => {
 
 // start server at port 3000
 app.listen(3000)
+console.log('Server is listening at port: 3000')
 ```
 There are two important steps here:
  - use koa-static to serve the build path that is used by webpack to place the bundle.js
@@ -148,6 +149,11 @@ There are two important steps here:
 ### 4. Redux React Counter example
 To add redux-react content we just copy the code from the redux counter example and place it in the app folder.
 
+First we need to install reast and redux:
+```bash
+$ npm install react@16.0.0 react-dom@16.0.0 react-redux@5.0.6 redux@3.7.2
+```
+
 #### Setup:
 Create an app folder.  
 Download the code from:  
@@ -155,4 +161,3 @@ https://github.com/reactjs/redux/tree/master/examples/counter/src
 
 Place all files (test is not included yet) in the app folder.
 Note that our webpack is pointing to the index.js from this example.
-TESTCHANGE

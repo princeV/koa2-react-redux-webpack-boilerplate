@@ -2,6 +2,10 @@
 
 This is the first extension that includes a REST API at the backend with a connection to a postgres db.
 
+What's __not__ included:
+- User management
+- Any kind of authentication
+
 [Project setup guide.](docs/extensions01_setup.md)
 
 ## Installation

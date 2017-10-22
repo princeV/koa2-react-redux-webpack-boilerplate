@@ -10,6 +10,10 @@ What's __not__ included:
 - Prod/Dev setup
 - Server-side rendering
 
+## Extensions:
+Please see the extensions folder for additional functionality like a REST API or db access etc.
+More releases will be coming soon...
+
 It's just a very basic setup with minimal dependencies and files.
 
 [Project setup guide.](docs/project-setup.md)

@@ -194,8 +194,8 @@ app.use(appRouter.routes());
 ```
 
 After that you will be able to access the api with the following URLs:
-GET - http://localhost:3000/api/post/ to see the list of posts
-GET - http://localhost:3000/api/post/:id to see one exsisting post depending on the :id
-POST - http://localhost:3000/api/post/ to create a new post (can be tested with e.g. Postman)
-DELETE - http://localhost:3000/api/post/:id to delete one exsisting post depending on the :id
-POST - http://localhost:3000/api/post/:id to update one exsisting post depending on the :id (title and text)
+- GET - http://localhost:3000/api/post/ to see the list of posts
+- GET - http://localhost:3000/api/post/:id to see one exsisting post depending on the :id
+- POST - http://localhost:3000/api/post/ to create a new post (can be tested with e.g. Postman)
+- DELETE - http://localhost:3000/api/post/:id to delete one exsisting post depending on the :id
+- POST - http://localhost:3000/api/post/:id to update one exsisting post depending on the :id (title and text)

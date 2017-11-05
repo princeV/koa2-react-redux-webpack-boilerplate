@@ -6,11 +6,12 @@ Minimalistic boilerplate for koa2, react, redux with the help of babel and webpa
 What's __not__ included:
 - HMR
 - Dev-Server
-- Tests
+- Tests (API tests available in extension)
 - Prod/Dev setup
 - Server-side rendering
 
-It's just a very basic setup with minimal dependencies and files.
+__Note:__  
+This is only very basic functionality without any intent to serve as a "real world" boilerplate.
 
 [Project setup guide.](docs/project-setup.md)
 
@@ -28,11 +29,11 @@ More releases will be coming soon...
 
     npm install
 
-#### Develop
+#### Build
 
     npm run build
 
-#### Test
+#### Start
 
     npm start
 
@@ -47,7 +48,7 @@ More releases will be coming soon...
     + [webpack](https://webpack.github.io/)
       + loaders: babel-loader
 - Core:
-    + [koa2](https://github.com/koajs/koa/tree/v2.x)
+    + [koa2](https://github.com/koajs/koa/)
       + file-serving: [koa-static](https://github.com/koajs/static)
     + [react](https://facebook.github.io/react/)
       + redux-bindings: [react-redux](https://github.com/reactjs/react-redux)

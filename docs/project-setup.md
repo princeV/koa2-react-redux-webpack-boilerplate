@@ -6,6 +6,26 @@ Before we start we need to setup a project folder and initialise the package.jso
 $ npm init
 ```
 
+
+## Folder structure:
+```bash
+project  
+│   .babelrc
+│   babel.hook.js
+│   package.json
+│   webpack.config.js  
+│
+└───app
+│   │   application data (react redux)
+│
+└───extensions
+│   │   different extensions e.g. api setup etc.
+│     
+└───server
+    │   index.html.js
+    │   index.js  
+```
+
 ### 1. Babel:
 #### Installation:
 Babel hook and polyfill
@@ -65,34 +85,38 @@ $ npm install webpack@3.7.1 --only=dev
 #### Setup:
 
 __webpack.config.js:__  
-Very basic webpack setup:
+Very basic webpack setup.
+
 ```javascript
 module.exports = {
   devtool: 'source-map',
-  entry:  __dirname + "/app/index.js",
+  entry: ['babel-polyfill', __dirname + "/app/index.js"],
   output: {
     path: __dirname + "/build",
     filename: "bundle.js"
   },
   module: {
-    rules: [
+    rules: [{
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }
     ]
-  },
+  }
 }
 ```
 - devtool: 'source-map' adds source mapping. More infos [here](http://webpack.github.io/docs/configuration.html#devtool).  
 You can see the mapping in the browser like this:
 ![Webpack Source Map Browser](./Webpack_SourceMap.jpg)
-- entry is the file where the react components get rendered
+- entry contains the babel-polyfill for the latest js globals and points to the file where the react components get rendered
 - output is the bundle.js in build path
   - the bundle.js needs to get refeenced in the html template
   - the build path needs to get served that the client can access it
-- we only use one loader here to translate the react/es6 stuff via babel
+- we only use two loaders here to translate the react/es6 stuff via babel and enable css imports and files
 
 __package.json:__  
 Last point here is to add a script shortcut in the package.json:
@@ -111,7 +135,7 @@ $ npm install koa@2.3.0 koa-static@4.0.1
 ```
 #### Setup:
 
-__index.html.js:__
+__index.html.js:__  
 In this js file we have a function that returns a string that represents our html file. In our case we are passing in a sting as the title.  
 
 Important is:
@@ -127,8 +151,8 @@ here is how the body looks:
   <script type="text/javascript" src="bundle.js"></script>
 </body>
 ```
-__server.js:__
-The server.js contains the koa2 setup and the core of it looks like this:
+__index.js:__  
+The index.js contains the koa2 setup and the core of it looks like this:
 ```javascript
 // serve static files e.g. bundle.js
 app.use(serve('./build'))

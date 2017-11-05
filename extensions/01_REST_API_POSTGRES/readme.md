@@ -2,9 +2,14 @@
 
 This is the first extension that includes a REST API at the backend with a connection to a postgres db.
 
+__Note:__  
+This is only very basic functionality without any intent to serve as a "real world" boilerplate.
+
 What's __not__ included:
 - User management
 - Any kind of authentication
+- API test
+- Production setup
 
 [Project setup guide.](docs/extensions01_setup.md)
 
@@ -14,12 +19,12 @@ What's __not__ included:
 
 #### Setup
 
-    npm install
+        npm install
 
-#### Develop
+#### Build
 
-    npm run build
+        npm run build
 
-#### Test
+#### Start
 
-    npm start
+        npm start

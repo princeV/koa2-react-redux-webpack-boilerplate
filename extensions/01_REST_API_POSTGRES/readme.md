@@ -11,7 +11,7 @@ What's __not__ included:
 - API test
 - Production setup
 
-[Project setup guide.](docs/extensions01_setup.md)
+[Project setup guide.](./docs/extensions01_setup.md)
 
 ## Installation
 

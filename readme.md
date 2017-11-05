@@ -13,7 +13,7 @@ What's __not__ included:
 __Note:__  
 This is only very basic functionality without any intent to serve as a "real world" boilerplate.
 
-[Project setup guide.](docs/project-setup.md)
+[Project setup guide.](./docs/project-setup.md)
 
 ## Extensions:
 Please see the [extensions](extensions/) folder for additional functionality like a REST API or db access etc.

@@ -6,7 +6,6 @@ Before we start we need to setup a project folder and initialise the package.jso
 $ npm init
 ```
 
-
 ## Folder structure:
 ```bash
 project  
@@ -79,7 +78,7 @@ Last point here is to add a script shortcut in the package.json:
 #### Installation:
 
 ```bash
-$ npm install webpack@3.7.1 --save-dev
+$ npm install webpack@3.7.1 css-loader@0.28.7 --save-dev
 ```
 
 #### Setup:

@@ -42,7 +42,7 @@ Babel presets and loader:
 - react is required for the react jsx syntax etc.
 - babel-loader is required for the webpack setup - client side
 ```bash
-$ npm install babel-preset-env@1.6.0 babel-preset-stage-0@6.24.1 babel-preset-react@6.24.1 babel-loader@7.1.2 --only=dev
+$ npm install babel-preset-env@1.6.0 babel-preset-stage-0@6.24.1 babel-preset-react@6.24.1 babel-loader@7.1.2 --save-dev
 ```
 
 #### Setup:
@@ -79,7 +79,7 @@ Last point here is to add a script shortcut in the package.json:
 #### Installation:
 
 ```bash
-$ npm install webpack@3.7.1 --only=dev
+$ npm install webpack@3.7.1 --save-dev
 ```
 
 #### Setup:

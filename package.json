@@ -1,8 +1,8 @@
 {
   "name": "koa2-react-redux-webpack-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "Minimalistic boilerplate for koa2, react, redux with the help of babel and webpack.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",

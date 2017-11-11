@@ -42,7 +42,7 @@ More releases will be coming soon...
 ## Dependencies
 
 - Test:
-    + left out for simplicity reasons
+    + left out for simplicity reasons (included in API extension)
 - Build:  
     + [babel](http://babeljs.io/)
       + tools: babel-register/ babel-polyfill

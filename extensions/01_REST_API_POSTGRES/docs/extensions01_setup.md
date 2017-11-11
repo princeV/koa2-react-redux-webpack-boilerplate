@@ -90,7 +90,7 @@ $ npm install pg@7.3.0 koa-bodyparser@4.2.0
 #### project setup
 
 __model & db:__  
-Add the model and the db folter to the server directory.  
+Add the model and the db folder to the server directory.  
 In the __db__ folder we need two files:
 
 __index.js:__  
@@ -114,9 +114,9 @@ In this file we will add the select statements for our api.
 As this is only for demo purposes we will not do any authentication and we will create all main
 routes:
 - select the list
-- select a single post
-- insert a new post
-- delete an exsisting post
+- select a single post (not included in docu)
+- insert a new post (not included in docu)
+- delete an exsisting post (not included in docu)
 - update an exsisting post
 
 We will use the connection from the db connection setup file and maintain all required sql statements for the post object.

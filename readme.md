@@ -12,6 +12,7 @@ What's __not__ included:
 
 __Note:__  
 This is only very basic functionality without any intent to serve as a "real world" boilerplate.
+It's more ment to be like a quick start to try and learn.
 
 [Project setup guide.](./docs/project-setup.md)
 
@@ -28,6 +29,7 @@ More releases will be coming soon...
 #### Setup
 
     npm install
+    npm install --only-dev
 
 #### Build
 

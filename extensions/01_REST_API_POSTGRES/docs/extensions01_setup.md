@@ -33,6 +33,7 @@ CREATE TABLE public.post
 );
 alter sequence post_id_seq owned by public.post.id;
 GRANT ALL ON TABLE public.post TO "dbUser";
+GRANT ALL ON SEQUENCE post_id_seq TO "dbUser";
 GRANT ALL ON TABLE public.post TO "postgres";
 ```
 Insert some records to have some sample data:
@@ -51,6 +52,7 @@ INSERT INTO public.post("title", "text")
 project  
 │   .babelrc
 │   babel.hook.js
+│   babel.hook.mocha.js
 │   package.json
 │   webpack.config.js  
 │
@@ -72,7 +74,10 @@ project
     │       │   post.sql.js
     │        
     └───router
-        │   post.router.js
+    │   │   post.router.js
+    │
+    └───test
+        │   test.api.post.js
 
 ```
 
@@ -212,3 +217,123 @@ After that you will be able to access the api with the following URLs:
 - POST - http://localhost:3000/api/post/ to create a new post (can be tested with e.g. Postman)
 - DELETE - http://localhost:3000/api/post/:id to delete one exsisting post depending on the :id
 - POST - http://localhost:3000/api/post/:id to update one exsisting post depending on the :id (title and text)
+
+
+#### Test
+In order to do an automated test on our API, we use __mocha__ and __chai__ + chai-http.
+
+Install them via:  
+```bash
+$ npm install mocha@4.0.1 chai@4.1.2 chai-http@3.0.0 --save-dev
+```
+
+In the __test__ folder we add the following file:
+
+__test.api-post.js:__  
+This file will use chai as the assertion library for node and chai-http to make the api calls (get, post, put).
+
+Here is an excerpt for the get all and the update.
+Before the actual api call is done we:  
+1) make sure to use chaiHttp  
+2) truncate the post table and create one sample post
+
+```javascript
+const should = chai.should()
+const PATH = "/api/post/"
+chai.use(chaiHttp)
+
+describe('Post API', () => {
+  let postId;
+  before( async function(){
+    await Post.truncate()
+    const post = new Post('TestTitle', 'Test Text')
+    const result = await post.save()
+    postId = result.rows[0].id
+  })
+```
+Then we continue with the actual calls - we need the server from the index.js and we need to set our criteria.
+Here is the code for the get all and update one part:
+
+```javascript
+  it("should return all posts", done => {
+    chai
+      .request(server)
+      .get(`${PATH}`)
+      .end((err, res) => {
+        should.not.exist(err)
+        res.status.should.eql(200)
+        res.type.should.eql("application/json")
+        res.body.data.rows[0].should.include.keys("id", "title", "text")
+        res.body.data.command.should.eql("SELECT")
+        done()
+      })
+  })
+  it("should update one post", done => {
+    chai
+      .request(server)
+      .put(`${PATH}${postId}`)
+      .send({
+        "data": {
+          "title": "Updated",
+          "text": "Updated"
+        }
+      })
+      .end((err, res) => {
+        should.not.exist(err)
+        res.status.should.eql(200)
+        res.type.should.eql("application/json")
+        res.body.data.command.should.eql("UPDATE")
+        res.body.data.rowCount.should.eql(1)
+        done()
+      })
+  })
+  ...
+})
+```
+
+__index.js:__  
+To be able to import the server in the test file we need to export it.  
+To do that, make the following changes to the index.js in the server folder:
+```javascript
+const server = app.listen(3000)
+
+// export the server for test usage
+export default server
+```
+
+__bebel.hook.mocha.js:__
+As we want to be able to use the latest js in the test files as well we need to have a babel hook for them as well.
+Create the hook in the __root__ project folder and add this:
+```javascript
+'use strict';
+require('babel-register');
+require('babel-polyfill');
+```
+
+__package.json:__  
+The last change is the setup of the mocha call in the package.json.  
+Add this to the scripts section:
+
+```json
+"test": "mocha server/test/ --require babel.hook.mocha.js",
+```
+
+__Run Tests:__  
+You should now be able to run the API test by typing:  
+
+```bash
+$ npm run test
+```
+
+with the positive results:
+```bash
+Post API
+  √ should create one post
+  √ should return all posts
+  √ should return one post
+  √ should update one post
+  √ should delete one post
+
+
+5 passing (267ms)
+```

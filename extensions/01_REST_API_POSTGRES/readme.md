@@ -15,15 +15,20 @@ What's __not__ included:
 
 ## Installation
 
-    Move all files that are in the 01_REST_API_POSTGRES folder to the root and override where asked.
+    Move all files that are in the 01_REST_API_POSTGRES folder to the root and make sure to override the exsisting ones.
 
 #### Setup
 
         npm install
+        npm install --only-dev
 
 #### Build
 
         npm run build
+
+#### Test
+
+        npm run test
 
 #### Start
 

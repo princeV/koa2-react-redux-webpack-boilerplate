@@ -8,7 +8,6 @@ This is only very basic functionality without any intent to serve as a "real wor
 What's __not__ included:
 - User management
 - Any kind of authentication
-- API test
 - Production setup
 
 [Project setup guide.](./docs/extensions01_setup.md)

@@ -33,3 +33,19 @@ What's __not__ included:
 #### Start
 
         npm start
+
+## Additional Dependencies
+
+- Test:
+   + framework [mocha](https://github.com/mochajs/mocha)
+   + assertion [chai](https://github.com/chaijs/chai)  
+      + http requests: [chai-http](https://github.com/chaijs/chai-http)
+
+- Core:
+   + node postgress client [pg](https://github.com/brianc/node-postgres)
+   + server side routing [koa-router](https://github.com/alexmingoia/koa-router)
+   + db response parser [koa-bodyparser](https://github.com/koajs/bodyparser)
+
+## License
+
+MIT
